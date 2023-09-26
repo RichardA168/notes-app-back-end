@@ -5,8 +5,8 @@ const routes = require('./routes');//-------------> untuk manggil routes.js dipa
 const init = async () => {
   const server = Hapi.server({
     port: 5000,
-    host: 'localhost',
-
+    // host: 'localhost',
+    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
     routes: {//-----------------------> fungsi CORS atau Cross-Origin Response Sharing
       cors: {
         origin: ['*'],
